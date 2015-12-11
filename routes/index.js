@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
     sock.end();
 
 
-    res.render('index', { title: 'Daily Change By Ticker', content: result.aggregationByTicker });
+    res.render('index', { title: 'Daily Change By Ticker', content: result.content.aggregationByTicker });
   });
   sock.on('end', function() {
     console.log('disconnect to service');
@@ -45,7 +45,7 @@ router.get('/byQuality', function(req, res, next) {
     sock.end();
 
 
-    res.render('byQuality', { title: 'Daily Change By Quality', content: result.aggregationByQuality });
+    res.render('byQuality', { title: 'Daily Change By Quality', content: result.content.aggregationByQuality });
   });
   sock.on('end', function() {
     console.log('disconnect to service');

@@ -56,4 +56,12 @@ router.get('/byQuality', function(req, res, next) {
 
 });
 
+
+router.get('/riskByMaturity', function(req, res, next) {
+
+    res.render('riskByMaturity', { title: 'Risk by Maturity', content: 'k' });
+
+
+});
+
 module.exports = router;

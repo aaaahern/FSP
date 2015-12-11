@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="/javascripts/jquery-2.1.4.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Financial Risk Management</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Daily Change
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="">By Ticker</a></li>
+                    <li><a href="/byQuality">By Quality</a></li>
+                </ul>
+            </li>
+            <li class="active btn-link"><a href="/riskByMaturity">Risk by Maturity</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Content -->
+<h1><%= title %></h1>
+<table class="table table-bordered table-striped">
+    <thead>
+    <td></td>
+    <td colspan="2" class="info text-center"><strong>2YR</strong></td>
+    <td colspan="2" class="warning text-center"><strong>5YR</strong></td>
+    <td colspan="2" class="success text-center"><strong>10YR</strong></td>
+    <td colspan="2" bgcolor="#daa520" class="text-center"><strong>30YR</strong></td>
+    </thead>
+
+    <thead>
+    <td class="text-center"><strong>Book</strong></td>
+    <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Mkt Value</strong></td>
+    <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Mkt Value</strong></td>
+    <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Mkt Value</strong></td>
+    <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Mkt Value</strong></td>
+    </thead>
+
+</table>
+
+<div class="row">
+    <label class="control-label col-sm-1" for="Spread">Spread</label>
+
+
+    <div class="col-xs-1">
+        <input type="text" class="form-control" placeholder="00.00">
+    </div>
+    <label class="control-label col-sm-1" for="Spread">2YR</label>
+
+    <div class="col-xs-1">
+        <input type="text" class="form-control" placeholder="00.00">
+    </div>
+    <label class="control-label col-sm-1" for="Spread">5YR</label>
+
+    <div class="col-xs-1">
+        <input type="text" class="form-control" placeholder="00.00">
+    </div>
+    <label class="control-label col-sm-1" for="Spread">10YR</label>
+
+    <div class="col-xs-1">
+        <input type="text" class="form-control" placeholder="00.00">
+    </div>
+    <label class="control-label col-sm-1" for="Spread">30YR</label>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

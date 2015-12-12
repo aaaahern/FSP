@@ -9,203 +9,213 @@
         <script src="/javascripts/bootstrap.min.js"></script>
     </head>
     <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Financial Risk Management</a>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Financial Risk Management</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Daily Change
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">By Ticker</a></li>
+                            <li><a href="/byQuality">By Quality</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="active"><a href="/riskByMaturity">Risk by Maturity</a></li>
+                    <li><a href="/varChart">Historical P&L Chart</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <h1><%= title %></h1>
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col style="width:20%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+            </colgroup>
+
+            <thead>
+            <td></td>
+            <td colspan="2" class="info text-center"><strong>2YR</strong></td>
+            <td colspan="2" class="warning text-center"><strong>5YR</strong></td>
+            <td colspan="2" class="success text-center"><strong>10YR</strong></td>
+            <td colspan="2" bgcolor="#daa520" class="text-center"><strong>30YR</strong></td>
+            </thead>
+
+            <thead>
+            <td class="text-center"><strong>Book</strong></td>
+            <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
+            <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
+            <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
+            <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
+            </thead>
+
+            <tr>
+                <td>
+                    <%= content["bookRisk"]["book"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["2year_risk"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["2year_marketvalue"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["5year_risk"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["5year_marketvalue"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["10year_risk"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["10year_marketvalue"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["30year_risk"] %>
+                </td>
+                <td>
+                    <%= content["bookRisk"]["30year_marketvalue"] %>
+                </td>
+            </tr>
+
+
+        </table>
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col style="width:20%">
+                <col style="width:20%">
+                <col style="width:20%">
+                <col style="width:20%">
+                <col style="width:20%">
+            </colgroup>
+
+            <thead>
+            <td></td>
+            <td class="info text-center"><strong>2YR</strong></td>
+            <td class="warning text-center"><strong>5YR</strong></td>
+            <td class="success text-center"><strong>10YR</strong></td>
+            <td bgcolor="#daa520" class="text-center"><strong>30YR</strong></td>
+            </thead>
+
+
+            <tr>
+                <td>
+                    2yr hedge
+                </td>
+                <td>
+                    <%= content["2year_hedge"]["2year"] %>
+                </td>
+                <td>
+                    <%= content["2year_hedge"]["5year"] %>
+                </td>
+                <td>
+                    <%= content["2year_hedge"]["10year"] %>
+                </td>
+                <td>
+                    <%= content["2year_hedge"]["30year"] %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Original Yield Curve
+                </td>
+                <td>
+                    <%= setting["yieldCurve"]["2year"] %>
+                </td>
+                <td>
+                    <%= setting["yieldCurve"]["5year"] %>
+                </td>
+                <td>
+                    <%= setting["yieldCurve"]["10year"] %>
+                </td>
+                <td>
+                    <%= setting["yieldCurve"]["30year"] %>
+                </td>
+            </tr>
+            <tr>
+                <form>
+                    <td>
+                        Spread   <button type="submit" class="btn btn-primary btn-xs">Adjust Yield Curve</button>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" id="2year_spread" placeholder="<%= setting["spread"]["2year"] %>">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" id="5year_spread" placeholder="<%= setting["spread"]["5year"] %>">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" id="10year_spread" placeholder="<%= setting["spread"]["10year"] %>">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" id="30year_spread" placeholder="<%= setting["spread"]["30year"] %>">
+                    </td>
+                </form>
+            </tr>
+            <tr>
+                <td>
+                    New Yield Curve
+                </td>
+                <td>
+                    <%= setting["baseYield"]["2year"] %>
+                </td>
+                <td>
+                    <%= setting["baseYield"]["5year"] %>
+                </td>
+                <td>
+                    <%= setting["baseYield"]["10year"] %>
+                </td>
+                <td>
+                    <%= setting["baseYield"]["30year"] %>
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="col-lg-14">
+            <div class="col-lg-4">
+                <button type="button" class="btn btn-success btn-group-justified">Original</button>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Shift 50% Up</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> Shift 50% down</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        </br>
+        </br>
+        </br>
+
         <div>
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Daily Change
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/">By Ticker</a></li>
-                        <li><a href="/byQuality">By Quality</a></li>
-
-                    </ul>
-                </li>
-                <li class="active"><a href="/riskByMaturity">Risk by Maturity</a></li>
-                <li><a href="/varChart">Historical P&L Chart</a></li>
-
-            </ul>
+            <div class="alert alert-success" role="alert">
+                <strong>Real Time:</strong> <%= time["realTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>User Time:</strong> <%= time["userTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>System Time:</strong> <%= time["systemTime"] %> milliseconds
+            </div>
         </div>
-    </nav>
-
-    <!-- Content -->
-    <h1><%= title %></h1>
-    <table class="table table-bordered table-striped">
-        <colgroup>
-            <col style="width:20%">
-            <col style="width:10%">
-            <col style="width:10%">
-            <col style="width:10%">
-            <col style="width:10%">
-            <col style="width:10%">
-            <col style="width:10%">
-            <col style="width:10%">
-            <col style="width:10%">
-        </colgroup>
-
-        <thead>
-        <td></td>
-        <td colspan="2" class="info text-center"><strong>2YR</strong></td>
-        <td colspan="2" class="warning text-center"><strong>5YR</strong></td>
-        <td colspan="2" class="success text-center"><strong>10YR</strong></td>
-        <td colspan="2" bgcolor="#daa520" class="text-center"><strong>30YR</strong></td>
-        </thead>
-
-        <thead>
-        <td class="text-center"><strong>Book</strong></td>
-        <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
-        <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
-        <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
-        <td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>Market Value</strong></td>
-        </thead>
-
-        <tr>
-            <td>
-                <%= content["bookRisk"]["book"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["2year_risk"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["2year_marketvalue"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["5year_risk"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["5year_marketvalue"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["10year_risk"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["10year_marketvalue"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["30year_risk"] %>
-            </td>
-            <td>
-                <%= content["bookRisk"]["30year_marketvalue"] %>
-            </td>
-        </tr>
-
-
-    </table>
-    <table class="table table-bordered table-striped">
-        <colgroup>
-            <col style="width:20%">
-            <col style="width:20%">
-            <col style="width:20%">
-            <col style="width:20%">
-            <col style="width:20%">
-        </colgroup>
-
-        <thead>
-        <td></td>
-        <td class="info text-center"><strong>2YR</strong></td>
-        <td class="warning text-center"><strong>5YR</strong></td>
-        <td class="success text-center"><strong>10YR</strong></td>
-        <td bgcolor="#daa520" class="text-center"><strong>30YR</strong></td>
-        </thead>
-
-
-        <tr>
-            <td>
-                2yr hedge
-            </td>
-            <td>
-                <%= content["2year_hedge"]["2year"] %>
-            </td>
-            <td>
-                <%= content["2year_hedge"]["5year"] %>
-            </td>
-            <td>
-                <%= content["2year_hedge"]["10year"] %>
-            </td>
-            <td>
-                <%= content["2year_hedge"]["30year"] %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Original Yield Curve
-            </td>
-            <td>
-                <%= setting["yieldCurve"]["2year"] %>
-            </td>
-            <td>
-                <%= setting["yieldCurve"]["5year"] %>
-            </td>
-            <td>
-                <%= setting["yieldCurve"]["10year"] %>
-            </td>
-            <td>
-                <%= setting["yieldCurve"]["30year"] %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                New Yield Curve
-            </td>
-            <td>
-                <%= setting["baseYield"]["2year"] %>
-            </td>
-            <td>
-                <%= setting["baseYield"]["5year"] %>
-            </td>
-            <td>
-                <%= setting["baseYield"]["10year"] %>
-            </td>
-            <td>
-                <%= setting["baseYield"]["30year"] %>
-            </td>
-        </tr>
-
-
-    </table>
-
-    <form class="form-inline">
-        <div class="form-group">
-            <label for="2year_spread">2YR</label>
-            <input type="text" class="form-control" id="2year_spread" placeholder="<%= setting["spread"]["2year"] %>">
-        </div>
-        <div class="form-group">
-            <label for="5year_spread">5YR</label>
-            <input type="text" class="form-control" id="5year_spread" placeholder="<%= setting["spread"]["5year"] %>">
-        </div>
-        <div class="form-group">
-            <label for="10year_spread">10YR</label>
-            <input type="text" class="form-control" id="10year_spread" placeholder="<%= setting["spread"]["10year"] %>">
-        </div>
-        <div class="form-group">
-            <label for="30year_spread">30YR</label>
-            <input type="text" class="form-control" id="30year_spread" placeholder="<%= setting["spread"]["30year"] %>">
-        </div>
-        <button type="submit" class="btn btn-primary">Calculate</button>
-    </form>
-
-
-
-    </br>
-            <button type="submit" class="btn btn-success btn-lg">Option1: Ordinary</button>
-            <button type="submit" class="btn btn-info btn-lg">Option2: Shift 50% Up</button>
-            <button type="submit" class="btn btn-danger btn-lg">Option3: Shift 50% down</button>
-
-    </br>
-
-
-    <div class="alert alert-success" role="alert">
-        <strong>Real Time:</strong> <%= time["realTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
-        <strong>User Time:</strong> <%= time["userTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
-        <strong>System Time:</strong> <%= time["systemTime"] %> milliseconds
-    </div>
-
 
     </body>
 </html>

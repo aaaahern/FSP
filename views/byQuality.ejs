@@ -67,34 +67,34 @@
 
         <% for(var i=0; i<content.length; i++) { %>
         <tr>
-            <td>
+            <td align="center">
                 <%= content[i]["quality"] %>
             </td>
-            <td>
+            <td align="center">
                 <%= content[i]["openAmount"] %>
             </td>
-            <td>
-                <%= content[i]["openRisk"] %>
+            <td align="center">
+                <%= content[i]["openRisk"].toFixed(2) %>
             </td>
-            <td>
+            <td align="center">
                 <%= content[i]["openLGD"] %>
             </td>
-            <td>
+            <td align="center">
                 <%= content[i]["closeAmount"] %>
             </td>
-            <td>
-                <%= content[i]["closeRisk"] %>
+            <td align="center">
+                <%= content[i]["closeRisk"].toFixed(2) %>
             </td>
-            <td>
+            <td align="center">
                 <%= content[i]["closeLGD"] %>
             </td>
-            <td>
+            <td align="center">
                 <%= content[i]["changeAmount"] %>
             </td>
-            <td>
-                <%= content[i]["changeRisk"] %>
+            <td align="center">
+                <%= content[i]["changeRisk"].toFixed(2) %>
             </td>
-            <td>
+            <td align="center">
                 <%= content[i]["changeLGD"] %>
             </td>
         </tr>
@@ -120,42 +120,42 @@
             <td>
                 VaR - Credit(Spread)
             </td>
-            <td>
-                <%= vardata["openSpread"] %>
+            <td align="center">
+                <%= vardata["openSpread"].toFixed(2) %>
             </td>
-            <td>
-                <%= vardata["closeSpread"] %>
+            <td align="center">
+                <%= vardata["closeSpread"].toFixed(2) %>
             </td>
-            <td>
-                <%= vardata["closeSpread"] - vardata["openSpread"] %>
+            <td align="center">
+                <%= (vardata["closeSpread"] - vardata["openSpread"]).toFixed(2) %>
             </td>
         </tr>
         <tr>
-            <td>
+            <td align="center">
                 VaR - Rate(Yield)
             </td>
-            <td>
-                <%= vardata["openYield"] %>
+            <td align="center">
+                <%= vardata["openYield"].toFixed(2) %>
             </td>
-            <td>
-                <%= vardata["closeYield"] %>
+            <td align="center">
+                <%= vardata["closeYield"].toFixed(2) %>
             </td>
-            <td>
-                <%= vardata["closeYield"] - vardata["openYield"] %>
+            <td align="center">
+                <%= (vardata["closeYield"] - vardata["openYield"]).toFixed(2) %>
             </td>
         </tr>
         <tr>
             <td>
                 VaR - Total
             </td>
-            <td>
-                <%= vardata["openVar"] %>
+            <td align="center">
+                <%= vardata["openVar"].toFixed(2) %>
             </td>
-            <td>
-                <%= vardata["closeVar"] %>
+            <td align="center">
+                <%= vardata["closeVar"].toFixed(2) %>
             </td>
-            <td>
-                <%= vardata["closeVar"] - vardata["openVar"] %>
+            <td align="center">
+                <%= (vardata["closeVar"] - vardata["openVar"]).toFixed(2) %>
             </td>
         </tr>
 

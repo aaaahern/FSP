@@ -43,14 +43,20 @@
 <script>
     var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
     var barChartData = {
-        labels : ["January","February","March","April","May","June","July"],
+        labels : ["J","F","M","A","M","J","J", "A"],
         datasets : [
             {
+
                 fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                barStrokeWidth : 1,
+                //Number - Spacing between each of the X value sets
+                barValueSpacing : 10,
+                /*fillColor : "rgba(220,220,220,0.5)",
                 strokeColor : "rgba(220,220,220,0.8)",
                 highlightFill: "rgba(220,220,220,0.75)",
-                highlightStroke: "rgba(220,220,220,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                highlightStroke: "rgba(220,220,220,1)",*/
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             }
 
         ]
@@ -60,7 +66,9 @@
         window.myBar = new Chart(ctx).Bar(barChartData, {
             responsive : true
         });
+
     }
+
 
 
 </script>

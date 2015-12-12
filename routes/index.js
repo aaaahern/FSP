@@ -5,7 +5,7 @@ var net = require('net');
 
 //Application Server Information
 var port = 0x1234;
-var host = 'localhost';
+var host = '172.16.205.90';
 
 
 /* GET home page. */

@@ -66,32 +66,32 @@
             </thead>
 
             <tr>
-                <td>
+                <td align="center">
                     <%= content["bookRisk"]["book"] %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["2year_risk"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["2year_risk"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["2year_marketvalue"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["2year_marketvalue"].toFixed(0) %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["5year_risk"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["5year_risk"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["5year_marketvalue"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["5year_marketvalue"].toFixed(0) %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["10year_risk"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["10year_risk"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["10year_marketvalue"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["10year_marketvalue"].toFixed(0) %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["30year_risk"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["30year_risk"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= content["bookRisk"]["30year_marketvalue"] %>
+                <td align="center">
+                    <%= content["bookRisk"]["30year_marketvalue"].toFixed(0) %>
                 </td>
             </tr>
 
@@ -119,34 +119,34 @@
                 <td>
                     2yr hedge
                 </td>
-                <td>
-                    <%= content["2year_hedge"]["2year"] %>
+                <td align="center">
+                    <%= content["2year_hedge"]["2year"].toFixed(0) %>
                 </td>
-                <td>
-                    <%= content["2year_hedge"]["5year"] %>
+                <td align="center">
+                    <%= content["2year_hedge"]["5year"].toFixed(0) %>
                 </td>
-                <td>
-                    <%= content["2year_hedge"]["10year"] %>
+                <td align="center">
+                    <%= content["2year_hedge"]["10year"].toFixed(0) %>
                 </td>
-                <td>
-                    <%= content["2year_hedge"]["30year"] %>
+                <td align="center">
+                    <%= content["2year_hedge"]["30year"].toFixed(0) %>
                 </td>
             </tr>
             <tr>
                 <td>
                     Original Yield Curve
                 </td>
-                <td>
-                    <%= setting["yieldCurve"]["2year"] %>
+                <td align="center">
+                    <%= setting["yieldCurve"]["2year"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= setting["yieldCurve"]["5year"] %>
+                <td align="center">
+                    <%= setting["yieldCurve"]["5year"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= setting["yieldCurve"]["10year"] %>
+                <td align="center">
+                    <%= setting["yieldCurve"]["10year"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= setting["yieldCurve"]["30year"] %>
+                <td align="center">
+                    <%= setting["yieldCurve"]["30year"].toFixed(2) %>
                 </td>
             </tr>
             <tr>
@@ -155,16 +155,16 @@
                         Spread   <button type="submit" class="btn btn-primary btn-xs">Adjust Yield Curve</button>
                     </td>
                     <td>
-                        <input type="text" class="form-control input-sm" id="2year_spread" placeholder="<%= setting["spread"]["2year"] %>">
+                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="2year_spread" placeholder="<%= setting["spread"]["2year"].toFixed(2) %>">
                     </td>
                     <td>
-                        <input type="text" class="form-control input-sm" id="5year_spread" placeholder="<%= setting["spread"]["5year"] %>">
+                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="5year_spread" placeholder="<%= setting["spread"]["5year"].toFixed(2) %>">
                     </td>
                     <td>
-                        <input type="text" class="form-control input-sm" id="10year_spread" placeholder="<%= setting["spread"]["10year"] %>">
+                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="10year_spread" placeholder="<%= setting["spread"]["10year"].toFixed(2) %>">
                     </td>
                     <td>
-                        <input type="text" class="form-control input-sm" id="30year_spread" placeholder="<%= setting["spread"]["30year"] %>">
+                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="30year_spread" placeholder="<%= setting["spread"]["30year"].toFixed(2) %>">
                     </td>
                 </form>
             </tr>
@@ -172,17 +172,17 @@
                 <td>
                     New Yield Curve
                 </td>
-                <td>
-                    <%= setting["baseYield"]["2year"] %>
+                <td align="center">
+                    <%= setting["baseYield"]["2year"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= setting["baseYield"]["5year"] %>
+                <td align="center">
+                    <%= setting["baseYield"]["5year"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= setting["baseYield"]["10year"] %>
+                <td align="center">
+                    <%= setting["baseYield"]["10year"].toFixed(2) %>
                 </td>
-                <td>
-                    <%= setting["baseYield"]["30year"] %>
+                <td align="center">
+                    <%= setting["baseYield"]["30year"].toFixed(2) %>
                 </td>
             </tr>
 

@@ -38,6 +38,19 @@
     <!-- Content -->
     <h1><%= title %></h1>
     <table class="table table-bordered table-striped">
+      <colgroup>
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col style="width:10%">
+      </colgroup>
+
       <thead>
         <td></td>
         <td colspan="3" class="info text-center"><strong>Opening Book</strong></td>
@@ -86,8 +99,71 @@
           </td>
         </tr>
         <% } %>
-
     </table>
 
+    <table class="table table-bordered table-striped">
+      <colgroup>
+        <col style="width:20%">
+        <col style="width:20%">
+        <col style="width:20%">
+        <col style="width:20%">
+      </colgroup>
+      <thead>
+      <td class =".col-md-3"></td>
+      <td class="info text-center .col-md-3"><strong>Opening Book</strong></td>
+      <td class="warning text-center .col-md-3"><strong>Closing Book</strong></td>
+      <td class="success text-center .col-md-3"><strong>Change</strong></td>
+      </thead>
+
+      <tr>
+        <td>
+          VaR - Credit(Spread)
+        </td>
+        <td>
+          <%= vardata["openSpread"] %>
+        </td>
+        <td>
+          <%= vardata["closeSpread"] %>
+        </td>
+        <td>
+          <%= vardata["closeSpread"] - vardata["openSpread"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          VaR - Rate(Yield)
+        </td>
+        <td>
+          <%= vardata["openYield"] %>
+        </td>
+        <td>
+          <%= vardata["closeYield"] %>
+        </td>
+        <td>
+          <%= vardata["closeYield"] - vardata["openYield"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          VaR - Total
+        </td>
+        <td>
+          <%= vardata["openVar"] %>
+        </td>
+        <td>
+          <%= vardata["closeVar"] %>
+        </td>
+        <td>
+          <%= vardata["closeVar"] - vardata["openVar"] %>
+        </td>
+      </tr>
+
+
+    </table>
+    <div class="alert alert-success" role="alert">
+      <strong>Real Time:</strong> <%= time["realTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
+      <strong>User Time:</strong> <%= time["userTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
+      <strong>System Time:</strong> <%= time["systemTime"] %> milliseconds
+    </div>
   </body>
 </html>

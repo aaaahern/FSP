@@ -27,7 +27,11 @@ router.get('/', function(req, res, next) {
   socket.on('end', function() {
     console.log('receive data size: ' + buffer.toString().length);
     var result = JSON.parse(buffer.toString());
-    res.render('index', { title: 'Daily Change By Ticker', content: result.content.aggregationByTicker });
+    res.render('index', { title: 'Daily Change By Ticker',
+                          content: result.content.aggregationByTicker,
+                          vardata: result.var,
+                          time: result.time
+                        });
   });
 
   socket.on('uncaughtException', function() {
@@ -58,7 +62,11 @@ router.get('/byQuality', function(req, res, next) {
   socket.on('end', function() {
     console.log('receive data size: ' + buffer.toString().length);
     result = JSON.parse(buffer.toString());
-    res.render('byQuality', { title: 'Daily Change By Quality', content: result.content.aggregationByQuality });
+    res.render('byQuality', { title: 'Daily Change By Quality',
+                              content: result.content.aggregationByQuality,
+                              vardata: result.var,
+                              time: result.time
+                            });
   });
 
   socket.on('uncaughtException', function() {
@@ -70,7 +78,36 @@ router.get('/byQuality', function(req, res, next) {
 
 router.get('/riskByMaturity', function(req, res, next) {
 
-    res.render('riskByMaturity', { title: 'Risk by Maturity', content: 'k' });
+
+  var socket = new net.Socket();
+
+  socket.connect(port, host);
+
+  socket.on('connect', function() { //Don't send until we're connected
+    socket.write('riskByMaturity');
+  });
+
+  var result;
+  var buffer = "";
+
+  socket.on('data', function(data) {
+    buffer += data;
+    socket.end();
+  });
+
+  socket.on('end', function() {
+    console.log('receive data size: ' + buffer.toString().length);
+    result = JSON.parse(buffer.toString());
+    res.render('riskByMaturity', { title: 'Risk by Maturity',
+                                   content: result.riskByMaturity,
+                                   setting: result.setting,
+                                   time: result.time
+                                 });
+  });
+
+  socket.on('uncaughtException', function() {
+    console.log('err');
+  });
 
 
 });

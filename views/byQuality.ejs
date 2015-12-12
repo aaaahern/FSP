@@ -1,93 +1,171 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <!-- Bootstrap -->
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script src="/javascripts/jquery-2.1.4.min.js"></script>
-    <script src="/javascripts/bootstrap.min.js"></script>
-</head>
-<body>
-<!-- Navigation Bar -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/">Financial Risk Management</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Daily Change
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="/">By Ticker</a></li>
-                    <li class="active"><a href="">By Quality</a></li>
-                </ul>
-            </li>
-            <li><a href="/riskByMaturity">Risk by Maturity</a></li>
-            <li><a href="/varChart">Historical P&L Chart</a></li>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <!-- Bootstrap -->
+        <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="/javascripts/jquery-2.1.4.min.js"></script>
+        <script src="/javascripts/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Financial Risk Management</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Daily Change
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/">By Ticker</a></li>
+                        <li class="active"><a href="">By Quality</a></li>
+                    </ul>
+                </li>
+                <li><a href="/riskByMaturity">Risk by Maturity</a></li>
+                <li><a href="/varChart">Historical P&L Chart</a></li>
 
 
 
-        </ul>
-    </div>
-</nav>
+            </ul>
+        </div>
+    </nav>
 
-<!-- Content -->
-<h1><%= title %></h1>
-<table class="table table-bordered table-striped">
-    <thead>
-    <td></td>
-    <td colspan="3" class="info text-center"><strong>Opening Book</strong></td>
-    <td colspan="3" class="warning text-center"><strong>Closing Book</strong></td>
-    <td colspan="3" class="success text-center"><strong>Change</strong></td>
-    </thead>
+    <!-- Content -->
+    <h1><%= title %></h1>
+    <table class="table table-bordered table-striped">
+        <colgroup>
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+            <col style="width:10%">
+        </colgroup>
 
-    <thead>
-    <td class="text-center"><strong>Quality</strong></td>
-    <td class="text-center"><strong>Amount</strong></td><td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>LGD</strong></td>
-    <td class="text-center"><strong>Amount</strong></td><td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>LGD</strong></td>
-    <td class="text-center"><strong>Amount</strong></td><td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>LGD</strong></td>
-    </thead>
+        <thead>
+        <td></td>
+        <td colspan="3" class="info text-center"><strong>Opening Book</strong></td>
+        <td colspan="3" class="warning text-center"><strong>Closing Book</strong></td>
+        <td colspan="3" class="success text-center"><strong>Change</strong></td>
+        </thead>
 
-    <% for(var i=0; i<content.length; i++) { %>
-    <tr>
-        <td>
-            <%= content[i]["quality"] %>
-        </td>
-        <td>
-            <%= content[i]["openAmount"] %>
-        </td>
-        <td>
-            <%= content[i]["openRisk"] %>
-        </td>
-        <td>
-            <%= content[i]["openLGD"] %>
-        </td>
-        <td>
-            <%= content[i]["closeAmount"] %>
-        </td>
-        <td>
-            <%= content[i]["closeRisk"] %>
-        </td>
-        <td>
-            <%= content[i]["closeLGD"] %>
-        </td>
-        <td>
-            <%= content[i]["changeAmount"] %>
-        </td>
-        <td>
-            <%= content[i]["changeRisk"] %>
-        </td>
-        <td>
-            <%= content[i]["changeLGD"] %>
-        </td>
-    </tr>
-    <% } %>
+        <thead>
+        <td class="text-center"><strong>Quality</strong></td>
+        <td class="text-center"><strong>Amount</strong></td><td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>LGD</strong></td>
+        <td class="text-center"><strong>Amount</strong></td><td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>LGD</strong></td>
+        <td class="text-center"><strong>Amount</strong></td><td class="text-center"><strong>Risk</strong></td><td class="text-center"><strong>LGD</strong></td>
+        </thead>
 
-</table>
+        <% for(var i=0; i<content.length; i++) { %>
+        <tr>
+            <td>
+                <%= content[i]["quality"] %>
+            </td>
+            <td>
+                <%= content[i]["openAmount"] %>
+            </td>
+            <td>
+                <%= content[i]["openRisk"] %>
+            </td>
+            <td>
+                <%= content[i]["openLGD"] %>
+            </td>
+            <td>
+                <%= content[i]["closeAmount"] %>
+            </td>
+            <td>
+                <%= content[i]["closeRisk"] %>
+            </td>
+            <td>
+                <%= content[i]["closeLGD"] %>
+            </td>
+            <td>
+                <%= content[i]["changeAmount"] %>
+            </td>
+            <td>
+                <%= content[i]["changeRisk"] %>
+            </td>
+            <td>
+                <%= content[i]["changeLGD"] %>
+            </td>
+        </tr>
+        <% } %>
 
-</body>
+    </table>
+
+    <table class="table table-bordered table-striped">
+        <colgroup>
+            <col style="width:20%">
+            <col style="width:20%">
+            <col style="width:20%">
+            <col style="width:20%">
+        </colgroup>
+        <thead>
+        <td class =".col-md-3"></td>
+        <td class="info text-center .col-md-3"><strong>Opening Book</strong></td>
+        <td class="warning text-center .col-md-3"><strong>Closing Book</strong></td>
+        <td class="success text-center .col-md-3"><strong>Change</strong></td>
+        </thead>
+
+        <tr>
+            <td>
+                VaR - Credit(Spread)
+            </td>
+            <td>
+                <%= vardata["openSpread"] %>
+            </td>
+            <td>
+                <%= vardata["closeSpread"] %>
+            </td>
+            <td>
+                <%= vardata["closeSpread"] - vardata["openSpread"] %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                VaR - Rate(Yield)
+            </td>
+            <td>
+                <%= vardata["openYield"] %>
+            </td>
+            <td>
+                <%= vardata["closeYield"] %>
+            </td>
+            <td>
+                <%= vardata["closeYield"] - vardata["openYield"] %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                VaR - Total
+            </td>
+            <td>
+                <%= vardata["openVar"] %>
+            </td>
+            <td>
+                <%= vardata["closeVar"] %>
+            </td>
+            <td>
+                <%= vardata["closeVar"] - vardata["openVar"] %>
+            </td>
+        </tr>
+
+
+    </table>
+
+        <div class="alert alert-success" role="alert">
+            <strong>Real Time:</strong> <%= time["realTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>User Time:</strong> <%= time["userTime"] %> milliseconds &nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>System Time:</strong> <%= time["systemTime"] %> milliseconds
+        </div>
+    </body>
 </html>

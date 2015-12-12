@@ -3,43 +3,31 @@ var router = express.Router();
 
 var net = require('net');
 
-
-var port = 0x1234; //The same port that the server is listening on
-var host = '172.16.179.50';
+//Application Server Information
+var port = 0x1234;
+var host = 'localhost';
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-
   var socket = new net.Socket(); //Decorate a standard net.Socket with JsonSocket
   var buffer = "";
 
   socket.connect(port, host);
 
-  socket.on('connect', function() { //Don't send until we're connected
+  socket.on('connect', function() {
     socket.write('aggregationByTicker');
   });
-  var result;
 
   socket.on('data', function(data) {
     buffer += data.toString();
-    console.log('data: ' + buffer);
-
-    console.log('size: ' + socket.bytesRead);
     socket.end();
   });
 
   socket.on('end', function() {
-    console.log('end');
-    //console.log(buffer.toString());
+    console.log('receive data size: ' + buffer.toString().length);
     var result = JSON.parse(buffer.toString());
     res.render('index', { title: 'Daily Change By Ticker', content: result.content.aggregationByTicker });
-    console.log('disconnect to service');
-  });
-
-  socket.on('close', function() {
-    console.log('Connection closed');
   });
 
   socket.on('uncaughtException', function() {
@@ -64,16 +52,15 @@ router.get('/byQuality', function(req, res, next) {
 
   socket.on('data', function(data) {
     buffer += data;
-    console.log('size: ' + socket.bytesRead);
     socket.end();
   });
 
   socket.on('end', function() {
-    console.log('buffer size: ' + buffer.toString().length);
+    console.log('receive data size: ' + buffer.toString().length);
     result = JSON.parse(buffer.toString());
     res.render('byQuality', { title: 'Daily Change By Quality', content: result.content.aggregationByQuality });
-    console.log('disconnect to service');
   });
+
   socket.on('uncaughtException', function() {
     console.log('err');
   });

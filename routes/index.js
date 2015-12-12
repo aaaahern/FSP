@@ -38,6 +38,14 @@ router.get('/', function(req, res, next) {
     console.log('err');
   });
 
+  socket.on('close', function() {
+    console.log('err');
+  });
+
+  socket.on('error', function() {
+    console.log('err');
+    res.render('error', {});
+  });
 });
 
 
@@ -71,6 +79,10 @@ router.get('/byQuality', function(req, res, next) {
 
   socket.on('uncaughtException', function() {
     console.log('err');
+  });
+  socket.on('error', function() {
+    console.log('err');
+    res.render('error', {});
   });
 
 });
@@ -106,6 +118,10 @@ router.get('/riskByMaturity', function(req, res, next) {
     console.log('err');
   });
 
+  socket.on('error', function() {
+    console.log('err');
+    res.render('error', {});
+  });
 });
 
 router.get('/varChart', function(req, res, next) {
@@ -139,6 +155,11 @@ router.get('/varChart', function(req, res, next) {
 
   socket.on('uncaughtException', function() {
     console.log('err');
+  });
+
+  socket.on('error', function() {
+    console.log('err');
+    res.render('error', {});
   });
 
 });
@@ -184,6 +205,11 @@ router.get('/adjustSpread', function(req, res, next) {
     console.log('err');
   });
 
+  socket.on('error', function() {
+    console.log('err');
+    res.render('error', {});
+  });
+
 });
 
 router.get('/upYield', function(req, res, next) {
@@ -222,6 +248,11 @@ router.get('/upYield', function(req, res, next) {
     console.log('err');
   });
 
+  socket.on('error', function() {
+    console.log('err');
+    res.render('error', {});
+  });
+
 });
 
 router.get('/downYield', function(req, res, next) {
@@ -258,6 +289,11 @@ router.get('/downYield', function(req, res, next) {
 
   socket.on('uncaughtException', function() {
     console.log('err');
+  });
+
+  socket.on('error', function() {
+    console.log('err');
+    res.render('error', {});
   });
 
 });

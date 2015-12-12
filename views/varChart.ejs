@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <script src="/javascripts/Chart.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="/javascripts/jquery-2.1.4.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Financial Risk Management</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Daily Change
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/">By Ticker</a></li>
+                    <li><a href="/byQuality">By Quality</a></li>
+                </ul>
+            </li>
+            <li class="btn-link"><a href="/riskByMaturity">Risk by Maturity</a></li>
+            <li class="btn-link"><a href="/varChart">Historical P&L Chart</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+
+<div style="width: 50%" align="center">
+    <canvas id="canvas" height="450" width="600"  align="center"></canvas>
+</div>
+
+<script>
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+    var barChartData = {
+        labels : ["January","February","March","April","May","June","July"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            }
+
+        ]
+    }
+    window.onload = function(){
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx).Bar(barChartData, {
+            responsive : true
+        });
+    }
+
+
+</script>
+
+
+
+</body>
+</html>
+

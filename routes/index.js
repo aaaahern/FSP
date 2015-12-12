@@ -7,7 +7,7 @@ var net = require('net');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var sock = net.createConnection({port: 0x1234, host: "172.16.205.90"}, function() {
+  var sock = net.createConnection({port: 0x1234}, function() {
     console.log('connect to service');
     sock.write('aggregationByTicker');  //send request to service
   });
@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/byQuality', function(req, res, next) {
-  var sock = net.createConnection({port: 0x1234, host: "172.16.205.90"}, function() {
+  var sock = net.createConnection({port: 0x1234}, function() {
     console.log('connect to service');
     sock.write('aggregationByQuality');  //send request to service
   });
@@ -43,7 +43,6 @@ router.get('/byQuality', function(req, res, next) {
     console.log(data.toString());
     result = JSON.parse(data.toString());
     sock.end();
-
 
     res.render('byQuality', { title: 'Daily Change By Quality', content: result.content.aggregationByQuality });
   });
@@ -60,6 +59,14 @@ router.get('/byQuality', function(req, res, next) {
 router.get('/riskByMaturity', function(req, res, next) {
 
     res.render('riskByMaturity', { title: 'Risk by Maturity', content: 'k' });
+
+
+});
+
+router.get('/varChart', function(req, res, next) {
+
+
+  res.render('varChart', { title: 'Historical P&L Chart', content: 'k' });
 
 
 });

@@ -22,12 +22,14 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="">By Ticker</a></li>
+                    <li><a href="/">By Ticker</a></li>
                     <li><a href="/byQuality">By Quality</a></li>
+
                 </ul>
             </li>
-            <li class="active btn-link"><a href="/riskByMaturity">Risk by Maturity</a></li>
-            <li><a href="#">About</a></li>
+            <li class="btn-link"><a href="/riskByMaturity">Risk by Maturity</a></li>
+            <li class="btn-link"><a href="/varChart">Historical P&L Chart</a></li>
+
         </ul>
     </div>
 </nav>
@@ -53,6 +55,7 @@
 
 </table>
 
+<div class="container">
 <div class="row">
     <label class="control-label col-sm-1" for="Spread">Spread</label>
 
@@ -79,7 +82,17 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </div>
+</div>
 
+
+<div class="container">
+<div class="row">
+
+        <button type="submit" class="btn btn-success btn-lg">Option1: Ordinary</button>
+        <button type="submit" class="btn btn-info btn-lg">Option2: Shift 50% Up</button>
+        <button type="submit" class="btn btn-danger btn-lg">Option3: Shift 50% down</button>
+</div>
+</div>
 
 
 

@@ -38,7 +38,7 @@
         <h1><%= title %></h1>
         <table class="table table-bordered table-striped">
             <colgroup>
-                <col style="width:20%">
+                <col style="width:10%">
                 <col style="width:10%">
                 <col style="width:10%">
                 <col style="width:10%">
@@ -150,21 +150,25 @@
                 </td>
             </tr>
             <tr>
-                <form>
+                <form action='/adjustSpread' method='get'>
                     <td>
                         Spread   <button type="submit" class="btn btn-primary btn-xs">Adjust Yield Curve</button>
                     </td>
                     <td>
-                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="2year_spread" placeholder="<%= setting["spread"]["2year"].toFixed(2) %>">
+                        <input type="hidden" name="yield2" value="<%= setting["baseYield"]["2year"] %>">
+                        <input type="text"  onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" name="spread2" id="2year_spread" value="<%= setting["spread"]["2year"] %>">
                     </td>
                     <td>
-                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="5year_spread" placeholder="<%= setting["spread"]["5year"].toFixed(2) %>">
+                        <input type="hidden" name="yield5" value="<%= setting["baseYield"]["5year"] %>">
+                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" name="spread5" id="5year_spread" value="<%= setting["spread"]["5year"] %>">
                     </td>
                     <td>
-                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="10year_spread" placeholder="<%= setting["spread"]["10year"].toFixed(2) %>">
+                        <input type="hidden" name="yield10" value="<%= setting["baseYield"]["10year"] %>">
+                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" name="spread10" id="10year_spread" value="<%= setting["spread"]["10year"] %>">
                     </td>
                     <td>
-                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" id="30year_spread" placeholder="<%= setting["spread"]["30year"].toFixed(2) %>">
+                        <input type="hidden" name="yield30" value="<%= setting["baseYield"]["30year"] %>">
+                        <input type="text" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" class="form-control input-sm" name="spread30" id="30year_spread" value="<%= setting["spread"]["30year"] %>">
                     </td>
                 </form>
             </tr>
@@ -190,16 +194,28 @@
 
         <div class="col-lg-14">
             <div class="col-lg-4">
-                <button type="button" class="btn btn-success btn-group-justified">Original</button>
+                <a type="button" class="btn btn-success btn-group-justified" href="/riskByMaturity">Original</a>
             </div>
 
             <div class="col-lg-8">
                 <div class="btn-group btn-group-justified" role="group">
                     <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Shift 50% Up</button>
+                        <form action='/upYield' method='get'>
+                            <input type="hidden" name="yield2" value="<%= setting["baseYield"]["2year"] %>">
+                            <input type="hidden" name="yield5" value="<%= setting["baseYield"]["5year"] %>">
+                            <input type="hidden" name="yield10" value="<%= setting["baseYield"]["10year"] %>">
+                            <input type="hidden" name="yield30" value="<%= setting["baseYield"]["30year"] %>">
+                            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Shift 50% Up</button>
+                        </form>
                     </div>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> Shift 50% down</button>
+                        <form action='/downYield' method='get'>
+                            <input type="hidden" name="yield2" value="<%= setting["baseYield"]["2year"] %>">
+                            <input type="hidden" name="yield5" value="<%= setting["baseYield"]["5year"] %>">
+                            <input type="hidden" name="yield10" value="<%= setting["baseYield"]["10year"] %>">
+                            <input type="hidden" name="yield30" value="<%= setting["baseYield"]["30year"] %>">
+                            <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> Shift 50% down</button>
+                        </form>
                     </div>
                 </div>
             </div>
